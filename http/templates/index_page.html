@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/http/templates/design.css"/>
+    <title>Главная страница</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body background="http/templates/img/clouds_pixel_art.jpeg">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: royalblue !important;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/" style="font-family: Pixel; color: lightblue;">ГЛАВНАЯ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/history" style="font-family: Pixel; color: darkblue;">ИСТОРИЯ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 style="text-align: center;">КАЛЬКУЛЯТОР</h1>
+    <h2>Как мной пользоваться?</h2>
+    <div class="desc" style="text-align: center; font-family: Pixel;">
+        <p >Введи любое выражение</p>
+        <p style="margin-top: -16px !important;">Как только расчеты будут сделаны, я выведу результат!</p>
+        <p style="margin-top: -13px !important;">Если в выражении есть скобки, пожалуйста, поставьте между ними пробел.</p>
+        <p style="margin-top: -10px !important;">Например: 2/ ( 2 + 2 ) *2 или 2* ( 10-5 ) -5</p>
+    </div>
+
+    <form method="POST" action="/submit">
+        <input name="data" type="text" value="" id="inputField" style="font-family: Pixel; width: 30%; margin-left: 605px;"/>
+        <input style="font-family: Pixel;" type="submit" value="Отправить" id="submitBtn"/>
+    </form>
+
+    <p style="font-family: Pixel; font-size: 28px; margin-left: 605px;">Результат: {{ .Number  }}</p>
+
+    <script>
+    $(document).ready(function(){
+        $("#submitBtn").click(function(){
+            $.get("/", function(data, status){
+                $("#inputField").val(data);
+            });
+        });
+    });
+    </script>
+</body>
+</html>
