@@ -34,14 +34,15 @@
         <p style="margin-top: -13px !important;">Если в выражении есть скобки, пожалуйста, поставьте между ними пробел.</p>
         <p style="margin-top: -10px !important;">Например: 2/ ( 2 + 2 ) *2 или 2* ( 10-5 ) -5</p>
     </div>
-
+    <!--создаем кнопку и поле для ввода выражения-->
     <form method="POST" action="/submit">
         <input name="data" type="text" value="" id="inputField" style="font-family: Pixel; width: 30%; margin-left: 605px;"/>
         <input style="font-family: Pixel;" type="submit" value="Отправить" id="submitBtn"/>
     </form>
-
+    <!--выводим результат расчетов-->
     <p style="font-family: Pixel; font-size: 28px; margin-left: 605px;">Результат: {{ .Number  }}</p>
-
+    <!--js код, реализующий отправления выражения на расчеты-->
+    <!--то есть, пользователь вводит выражение, нажимает на кнопку "отправить" и выражение отправляется считаться-->
     <script>
     $(document).ready(function(){
         $("#submitBtn").click(function(){
